@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: changelogs/db.changelog-tenant.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changelogs/account/db.changelog-account-master.yaml
+      relativeToChangelogFile: true
