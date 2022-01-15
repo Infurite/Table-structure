@@ -1,87 +1,41 @@
 package by.table.tableStructure.entity;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+import javax.persistence.*;
+import java.util.UUID;
+
+@RequiredArgsConstructor
+@Data
+@Entity
+@Table(name = "users")
 public class Users {
 
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "users_id",nullable = false,unique = true)
+    private UUID id;
 
-    private Tenant tenant;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "tenant",nullable = false)
+    private UUID tenant;
 
-    private Role role;
-
+    @Column(name = "email",length = 35,nullable = false,unique = true)
     private String email;
 
+    @Column(name = "password",length = 35,nullable = false)
     private String password;
 
+    @Column(name = "is_locked" , nullable = false)
     private boolean isLocked;
 
+    @Column(name = "is_deleted" , nullable = false)
     private boolean isDeleted;
 
+    @Column(name = "is_activated",nullable = false)
     private boolean isActivated;
 
     public Users() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Tenant getTenant() {
-        return tenant;
-    }
-
-    public void setTenant(Tenant tenant) {
-        this.tenant = tenant;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isLocked() {
-        return isLocked;
-    }
-
-    public void setLocked(boolean locked) {
-        isLocked = locked;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
-
-    public boolean isActivated() {
-        return isActivated;
-    }
-
-    public void setActivated(boolean activated) {
-        isActivated = activated;
     }
 }

@@ -1,129 +1,52 @@
 package by.table.tableStructure.entity;
 
-import java.util.Date;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.Date;
+@Data
+@Entity
+@Table(name = "client")
 public class Client {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "client_id",length = 50,nullable = false,unique = true)
     private Long id;
 
+    @Column(name = "client_secret",length = 60,nullable = false)
     private String clientSecret;
 
+    @Column(name = "resource_ids",length = 255,nullable = false)
     private String resourceIds;
 
+    @Column (name = "scope",length = 255,nullable = false)
     private String scope;
 
+    @Column(name = "grant_types",length = 255,nullable = false)
     private String grantTypes;
 
+    @Column(name = "authorities",length = 255,nullable = false)
     private String authorities;
 
+    @Column(name = "access_token_expiration",nullable = false)
     private Integer accessTokenExpiration;
 
+    @Column(name ="refresh_token_expiration",nullable = false)
     private Integer refreshTokenExpiration;
 
+    @Column(name = "additional_information",length = 400)
     private String additionalInformation;
 
+    @Column(name = "auto_approve",length = 255,nullable = false)
     private String autoApprove;
 
+    @Column (name = "created_at",nullable = false)
     private Date createdAt;
 
+    @Column(name = "updated_at",nullable = false)
     private Date updatedAt;
 
     public Client() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getClientSecret() {
-        return clientSecret;
-    }
-
-    public void setClientSecret(String clientSecret) {
-        this.clientSecret = clientSecret;
-    }
-
-    public String getResourceIds() {
-        return resourceIds;
-    }
-
-    public void setResourceIds(String resourceIds) {
-        this.resourceIds = resourceIds;
-    }
-
-    public String getScope() {
-        return scope;
-    }
-
-    public void setScope(String scope) {
-        this.scope = scope;
-    }
-
-    public String getGrantTypes() {
-        return grantTypes;
-    }
-
-    public void setGrantTypes(String grantTypes) {
-        this.grantTypes = grantTypes;
-    }
-
-    public String getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(String authorities) {
-        this.authorities = authorities;
-    }
-
-    public Integer getAccessTokenExpiration() {
-        return accessTokenExpiration;
-    }
-
-    public void setAccessTokenExpiration(Integer accessTokenExpiration) {
-        this.accessTokenExpiration = accessTokenExpiration;
-    }
-
-    public Integer getRefreshTokenExpiration() {
-        return refreshTokenExpiration;
-    }
-
-    public void setRefreshTokenExpiration(Integer refreshTokenExpiration) {
-        this.refreshTokenExpiration = refreshTokenExpiration;
-    }
-
-    public String getAdditionalInformation() {
-        return additionalInformation;
-    }
-
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
-    }
-
-    public String getAutoApprove() {
-        return autoApprove;
-    }
-
-    public void setAutoApprove(String autoApprove) {
-        this.autoApprove = autoApprove;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

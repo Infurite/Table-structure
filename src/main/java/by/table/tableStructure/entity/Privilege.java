@@ -1,37 +1,29 @@
 package by.table.tableStructure.entity;
 
+import lombok.Data;
+
+import javax.persistence.*;
+import java.util.UUID;
+
+@Data
+@Entity
+@Table(name = "privilege")
 public class Privilege {
 
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "privilege_id",unique = true)
+    private UUID id;
 
-    private String name;
+    @Column(name = "resource",length = 15,nullable = false)
+    private String resource;
 
+    @Column(name = "action",length = 10,nullable = false)
+    private String action;
+
+    @Column(name = "description",length = 150)
     private String description;
 
     public Privilege() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }
